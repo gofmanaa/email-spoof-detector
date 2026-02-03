@@ -1,1 +1,27 @@
 /target
+**/*.rs.bk
+**/*.rmeta
+Cargo.lock
+
+# Binaries
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Backup files
+*~
+*.swp
+*.swo
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.iml
+*.log
+
+# macOS
+.DS_Store
+
+# Docker build artifacts
+Dockerfile.*.old
