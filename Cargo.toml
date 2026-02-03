@@ -1,0 +1,42 @@
+[package]
+name = "email-spoof-detector"
+version = "0.1.0"
+edition = "2024"
+
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "cli"
+path = "src/bin/cli.rs"
+
+[[bin]]
+name = "web"
+path = "src/bin/web.rs"
+
+
+[dependencies]
+actix-web = "4.12.1"
+anyhow = "1.0.100"
+async-trait = "0.1.89"
+clap = { version = "4.5.56", features = ["derive"] } 
+env_logger = "0.11.8"
+futures = "0.3.31"
+idna = "1.1.0"
+mailparse = "0.16.1"
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.149"
+tokio = { version = "1.49.0", features = ["full"] }
+trust-dns-resolver = "0.23.2"
+log = "0.4.29"
+num_cpus = "1.17.0"
+
+[profile.release]
+opt-level = "z"          # or "s" small binary, reasonable speed, "3" for max speed, "z" for smallest size
+lto = true               # Link Time Optimization
+codegen-units = 1        # better for LTO, more optimizations
+panic = "abort"          # smaller binary, faster
+strip = "debuginfo"      # remove debug info for smaller binary
+overflow-checks = false  # faster, only if confident
+debug = 0                # no debug symbols
